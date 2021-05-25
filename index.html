@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>covid datas</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link href="https://maxcdn.bootstrapcdn.com/
+	font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="covid19.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<h1><marquee bgcolor="#35bd87">COVID-19 CASES IN</marquee><span id="country"></span> <img src="" id="flag"></h1>
+		<div class="board">
+			<div class="card a">
+				<i class="fa fa-tachometer"></i>
+				<h5>Active Cases</h5>
+				<span id="active"></span>
+			</div>
+			<div class="card ca">
+				<i class="fa fa-th-list"></i>
+				<h5>Total Cases</h5>
+				<span id="cases"></span>
+			</div>
+			<div class="card cr">
+				<i class="fa fa-times-circle"></i>
+				<h5>Critical Cases</h5>
+				<span id="critical"></span>
+			</div>
+			<div class="card d">
+				<i class="fa fa-times"></i>
+				<h5>Total Deaths</h5>
+				<span id="death"></span>
+			</div>
+			<div class="card r">
+				<i class="fa fa-check-square"></i>
+				<h5>Recovered Cases</h5>
+				<span id="recovered"></span>
+			</div>
+			<div class="card t">
+				<i class="fa fa-eye"></i>
+				<h5>Total Test Done</h5>
+				<span id="tests"></span>
+			</div>
+        </div>
+        <h3 align="center" class="footer">Design by Afraj_786</h3>
+
+	</div>
+
+</body>
+</html>
+<script type="text/javascript">
+	fetch('https://corona.lmao.ninja/v2/countries/India')
+	.then((response)=>{
+		return response.json();
+	})
+	.then((data)=>{
+		document.getElementById("flag").src = data.countryInfo.flag;
+		document.getElementById("country").innerHTML = data.country.toLocaleString();
+		document.getElementById("cases").innerHTML = data.cases.toLocaleString();
+		document.getElementById("critical").innerHTML = data.critical.toLocaleString();
+		document.getElementById("death").innerHTML = data.deaths.toLocaleString();
+		document.getElementById("recovered").innerHTML = data.recovered.toLocaleString();
+		document.getElementById("tests").innerHTML = data.tests.toLocaleString();
+		document.getElementById("active").innerHTML = data.active.toLocaleString();
+	})
+</script>
